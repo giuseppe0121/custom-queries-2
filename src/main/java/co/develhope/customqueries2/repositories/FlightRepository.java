@@ -18,15 +18,15 @@ import java.util.List;
 @Repository
 public interface FlightRepository extends JpaRepository<Flight,Long> {
 
-
      Page<Flight> findAll(Pageable pageable);
 
      Page<Flight> findAllByStatus(FlightStatus status, Pageable pageable);
 
-     @Query(value = "SELECT * FROM provarepo.flight as f where f.status = DELAYED OR f.status= CANCELLED;",nativeQuery = true)
-     List<Flight> findAllByCustomQuery(@Param("status") FlightStatus flightStatus,@Param("status") FlightStatus flightStatus1);
+     /*@Query(value = "SELECT * FROM provarepo.flight as f where f.status = ? OR f.status= ?;",nativeQuery = true)
+     List<Flight> findAllByCustomQuery(FlightStatus flightStatus, FlightStatus flightStatus1);
+      */
 
-
-     //List<Flight> findAllByStatus(FlightStatus flightStatus,FlightStatus flightStatus1);
+     @Query(value = "SELECT * FROM provarepo.flight as f where f.status = ?1 OR f.status= ?2;", nativeQuery = true)
+     List<Flight> findAllByStatus(FlightStatus flightStatus, FlightStatus flightStatus1);
 
 }

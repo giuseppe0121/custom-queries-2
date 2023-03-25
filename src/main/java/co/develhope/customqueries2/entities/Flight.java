@@ -4,7 +4,6 @@ import javax.persistence.*;
 
 @Entity
 @Table
-
 public class Flight {
 
     @Id
@@ -14,6 +13,7 @@ public class Flight {
     private String description;
     private String fromAirport;
     private String toAirport;
+
     private FlightStatus status;
 
     public Flight() {

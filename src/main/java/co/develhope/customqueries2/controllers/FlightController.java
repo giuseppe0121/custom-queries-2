@@ -50,8 +50,6 @@ public class FlightController {
         flightRepository.saveAll(newFlights);
     }
 
-
-
     @GetMapping("")
     public Page<Flight> getAllFlights(@RequestParam int page, @RequestParam int size){
         return flightRepository.findAll(PageRequest.of(page, size, Sort.by("fromAirport").ascending()));
@@ -64,11 +62,9 @@ public class FlightController {
 
     @GetMapping("/custom")
     public List<Flight> getCustomFlight(@RequestParam FlightStatus p1, @RequestParam FlightStatus p2){
-        return flightRepository.findAllByCustomQuery(p1, p2);
+        return flightRepository.findAllByStatus(p1, p2);
     }
 
-    /*@GetMapping("/custom")
-    public List<Flight> getCustomFlight(@RequestParam FlightStatus p1){
-        return flightRepository.findAllByStatus(p1);
-    }*/
+
+
 }
