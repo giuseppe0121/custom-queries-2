@@ -10,6 +10,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -22,8 +23,8 @@ public interface FlightRepository extends JpaRepository<Flight,Long> {
 
      Page<Flight> findAllByStatus(FlightStatus status, Pageable pageable);
 
-     @Query(value = "SELECT * FROM flight where status= DELAYED or status= CANCELLED;",nativeQuery = true)
-     List<Flight> findAllByCustomQuery(FlightStatus flightStatus,FlightStatus flightStatus1);
+     @Query(value = "SELECT * FROM provarepo.flight as f where f.status = DELAYED OR f.status= CANCELLED;",nativeQuery = true)
+     List<Flight> findAllByCustomQuery(@Param("status") FlightStatus flightStatus,@Param("status") FlightStatus flightStatus1);
 
 
      //List<Flight> findAllByStatus(FlightStatus flightStatus,FlightStatus flightStatus1);
