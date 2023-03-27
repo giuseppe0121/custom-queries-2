@@ -61,10 +61,8 @@ public class FlightController {
     }
 
     @GetMapping("/custom")
-    public List<Flight> getCustomFlight(@RequestParam FlightStatus p1, @RequestParam FlightStatus p2){
-        return flightRepository.findAllByStatus(p1, p2);
+    public List<Flight> getCustomFlight(@RequestParam String p1, @RequestParam String p2){
+        return flightRepository.findAllByStatusOrStatus(p1, p2);
     }
-
-
 
 }
