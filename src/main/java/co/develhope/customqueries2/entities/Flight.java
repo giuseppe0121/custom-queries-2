@@ -13,7 +13,7 @@ public class Flight {
     private String description;
     private String fromAirport;
     private String toAirport;
-
+    @Enumerated(EnumType.STRING)
     private FlightStatus status;
 
     public Flight() {

@@ -4,8 +4,8 @@ import javax.persistence.Enumerated;
 
 
 public enum FlightStatus {
-    CANCELLED,
     ONTIME,
+    CANCELLED,
     DELAYED
 
 }

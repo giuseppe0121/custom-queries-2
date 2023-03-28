@@ -12,6 +12,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -26,7 +28,8 @@ public interface FlightRepository extends JpaRepository<Flight,Long> {
      List<Flight> findAllByCustomQuery(FlightStatus flightStatus, FlightStatus flightStatus1);
       */
 
-     @Query(value = "SELECT * FROM provarepo.flight as f where f.status = ?1 OR f.status= ?2;", nativeQuery = true)
-     List<Flight> findAllByStatusOrStatus(String status, String status1);
+     @Query(value = "SELECT * FROM provarepo.flight as f where f.status = ? OR f.status= ?",nativeQuery = true)// {1},1,?1
+     List<Flight> findByStatusOrStatus(String p1, String p2);
 
 }
+
